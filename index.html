@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aer de Hartie — Evantaie artizanale</title>
+  <meta name="description" content="Evantaie de hartie in culori pastel, realizate manual. Roz, bleu, vernil, piersic. Comenzi personalizate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #f4c4cb;
+      --rose-deep: #e8a0ad;
+      --bleu: #b8d4e8;
+      --bleu-deep: #8fb8d4;
+      --vernil: #c8e4cc;
+      --vernil-deep: #9ecfb0;
+      --piersic: #f5dcc8;
+      --piersic-deep: #e8b898;
+      --cream: #faf7f2;
+      --warm-white: #fffefb;
+      --ink: #3d3835;
+      --ink-soft: #6b6560;
+      --line: rgba(61, 56, 53, 0.12);
+      --shadow: rgba(61, 56, 53, 0.06);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 24px var(--shadow);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--ink);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--ink);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-content {
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose-deep);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--warm-white);
+    }
+
+    .btn-filled {
+      background: var(--ink);
+      color: var(--warm-white);
+      margin-left: 1rem;
+    }
+
+    .btn-filled:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    /* Fan illustration */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .fan-display {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+
+    .fan {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      transform-origin: bottom center;
+      filter: drop-shadow(0 8px 24px var(--shadow));
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .fan:hover {
+      transform: rotate(-8deg) scale(1.03);
+    }
+
+    .fan-1 {
+      left: 50%;
+      bottom: 20%;
+      transform: translateX(-50%) rotate(-15deg);
+      z-index: 3;
+    }
+
+    .fan-2 {
+      left: 15%;
+      bottom: 10%;
+      transform: rotate(-35deg) scale(0.85);
+      z-index: 2;
+      opacity: 0.85;
+    }
+
+    .fan-3 {
+      right: 10%;
+      bottom: 15%;
+      transform: rotate(10deg) scale(0.78);
+      z-index: 1;
+      opacity: 0.75;
+    }
+
+    .fan svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-circle {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--piersic) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    /* ── Section shared ── */
+    section {
+      padding: 6rem 2.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--ink);
+      margin: 2rem 0;
+      opacity: 0.3;
+    }
+
+    /* ── About ── */
+    .about {
+      background: var(--warm-white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:first-of-type {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .value-card {
+      padding: 1.75rem;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: var(--cream);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px var(--shadow);
+    }
+
+    .value-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── Colors / Collection ── */
+    .colors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .color-card {
+      text-align: center;
+      cursor: default;
+    }
+
+    .color-swatch {
+      aspect-ratio: 3/4;
+      border-radius: 120px 120px 8px 8px;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .color-card:hover .color-swatch {
+      transform: translateY(-6px) rotate(-2deg);
+    }
+
+    .color-swatch::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        rgba(255,255,255,0.15) 8px,
+        rgba(255,255,255,0.15) 9px
+      );
+    }
+
+    .color-swatch::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 30%;
+      background: rgba(61, 56, 53, 0.15);
+    }
+
+    .swatch-rose { background: linear-gradient(180deg, var(--rose) 0%, var(--rose-deep) 100%); }
+    .swatch-bleu { background: linear-gradient(180deg, var(--bleu) 0%, var(--bleu-deep) 100%); }
+    .swatch-vernil { background: linear-gradient(180deg, var(--vernil) 0%, var(--vernil-deep) 100%); }
+    .swatch-piersic { background: linear-gradient(180deg, var(--piersic) 0%, var(--piersic-deep) 100%); }
+
+    .color-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .color-card p {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .custom-note {
+      margin-top: 3rem;
+      padding: 2rem 2.5rem;
+      border: 1px dashed var(--line);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: var(--warm-white);
+    }
+
+    .custom-note-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), var(--bleu), var(--vernil), var(--piersic));
+      opacity: 0.7;
+    }
+
+    .custom-note p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .custom-note strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── Occasions ── */
+    .occasions {
+      background: var(--warm-white);
+      border-top: 1px solid var(--line);
+    }
+
+    .occasions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .occasion {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--line);
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .occasion:hover {
+      background: var(--cream);
+    }
+
+    .occasion-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--rose-deep);
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .occasion h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .occasion p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info > p {
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose-deep);
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      border: 1px solid var(--line);
+      background: var(--warm-white);
+      color: var(--ink);
+      border-radius: 2px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--rose-deep);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    footer .logo {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.35; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 7rem;
+      }
+
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-visual { order: -1; }
+      .fan-display { width: 260px; height: 260px; }
+      .fan { width: 150px; height: 150px; }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .colors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .occasions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custom-note {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .btn-filled { margin-left: 0; margin-top: 0.75rem; }
+      .hero .btn-group { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(250, 247, 242, 0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+        padding: 1rem 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li { padding: 0.75rem 2rem; }
+
+      .menu-toggle { display: block; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .about-values { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <a href="#" class="logo">Aer de Hartie</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#despre">Despre</a></li>
+      <li><a href="#culori">Culori</a></li>
+      <li><a href="#ocazii">Ocazii</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Meniu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Evantaie artizanale</span>
+      <h1>O bataie ușoară<br>de <em>hartie pliată</em></h1>
+      <p>
+        Evantaie delicate, realizate manual, in nuante pastel ce aduc
+        o nota de eleganta simpla — pentru cadouri, evenimente sau
+        un colt linistit al casei.
+      </p>
+      <div class="btn-group">
+        <a href="#culori" class="btn">Vezi culorile</a>
+        <a href="#contact" class="btn btn-filled">Comanda</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-circle"></div>
+      <div class="fan-display">
+        <div class="fan fan-1">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 190 L20 30 Q100 10 180 30 Z" fill="url(#gradRose)"/>
+            <line x1="100" y1="190" x2="100" y2="30" stroke="rgba(61,56,53,0.08)" stroke-width="0.5"/>
+            <defs>
+              <linearGradient id="gradRose" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f4c4cb"/>
+                <stop offset="100%" stop-color="#e8a0ad"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="fan fan-2">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 190 L20 30 Q100 10 180 30 Z" fill="url(#gradBleu)"/>
+            <line x1="100" y1="190" x2="100" y2="30" stroke="rgba(61,56,53,0.08)" stroke-width="0.5"/>
+            <defs>
+              <linearGradient id="gradBleu" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#b8d4e8"/>
+                <stop offset="100%" stop-color="#8fb8d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="fan fan-3">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 190 L20 30 Q100 10 180 30 Z" fill="url(#gradPiersic)"/>
+            <line x1="100" y1="190" x2="100" y2="30" stroke="rgba(61,56,53,0.08)" stroke-width="0.5"/>
+            <defs>
+              <linearGradient id="gradPiersic" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f5dcc8"/>
+                <stop offset="100%" stop-color="#e8b898"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="about" id="despre">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="section-label">Despre noi</p>
+          <h2 class="section-title">Simplitate cu sens</h2>
+          <div class="divider"></div>
+          <p>
+            Fiecare evantai este pliat manual, cu grija pentru fiecare
+            linie si nuanta. Credem in obiecte frumoase, simple, care
+            nu striga — ci soptesc.
+          </p>
+          <p>
+            Estetica noastra imbina caldura europeana cu spiritul
+            minimal al spatiilor goale: putine culori, multa lumina,
+            respect pentru material.
+          </p>
+        </div>
+        <div class="about-values reveal">
+          <div class="value-card">
+            <h3>Lucrat manual</h3>
+            <p>Fiecare evantai este unic, pliat cu atentie si rabdare.</p>
+          </div>
+          <div class="value-card">
+            <h3>Hartie aleasa</h3>
+            <p>Textura fina, culori care nu se estompeaza usor.</p>
+          </div>
+          <div class="value-card">
+            <h3>La comanda</h3>
+            <p>Personalizam culori, dimensiuni si cantitati.</p>
+          </div>
+          <div class="value-card">
+            <h3>Cadou gata</h3>
+            <p>Ambalaj elegant inclus, perfect pentru daruri.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colors -->
+  <section id="culori">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Colectia pastel</p>
+        <h2 class="section-title">Patru nuante, o respiratie</h2>
+        <p class="section-desc">
+          Paleta noastra de baza — delicata, calda, usor de asortat.
+          Fiecare culoare exista si in variante mai intense, la cerere.
+        </p>
+      </div>
+
+      <div class="colors-grid reveal">
+        <div class="color-card">
+          <div class="color-swatch swatch-rose"></div>
+          <h3>Roz</h3>
+          <p>Blush discret, ca o obraz care roseste</p>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-bleu"></div>
+          <h3>Bleu</h3>
+          <p>Cer de primavara, linistit si clar</p>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-vernil"></div>
+          <h3>Vernil</h3>
+          <p>Verde usor, ca o adiere de primavara</p>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-piersic"></div>
+          <h3>Piersic</h3>
+          <p>Moale, dulce, invitatoare</p>
+        </div>
+      </div>
+
+      <div class="custom-note reveal">
+        <div class="custom-note-icon"></div>
+        <p>
+          <strong>Culori la comanda:</strong> Daca visezi la un rosu aprins,
+          un verde smarald sau un auriu stralucitor — putem realiza orice nuanta.
+          Trimite-ne o mostra sau o descriere si gasim impreuna culoarea perfecta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Occasions -->
+  <section class="occasions" id="ocazii">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Pentru ce momente</p>
+        <h2 class="section-title">Unde gaseste loc un evantai</h2>
+        <p class="section-desc">
+          Mic, dar prezent. Un detaliu care transforma un spatiu sau un cadou.
+        </p>
+      </div>
+
+      <div class="occasions-grid reveal">
+        <div class="occasion">
+          <div class="occasion-num">01</div>
+          <h3>Nunti &amp; botezuri</h3>
+          <p>Evantaie pentru invitati, decor de masa sau cadou de amintire — in culorile evenimentului tau.</p>
+        </div>
+        <div class="occasion">
+          <div class="occasion-num">02</div>
+          <h3>Cadouri</h3>
+          <p>Un dar neasteptat, elegant, pentru cineva care apreciaza detaliile facute cu suflet.</p>
+        </div>
+        <div class="occasion">
+          <div class="occasion-num">03</div>
+          <h3>Decor acasa</h3>
+          <p>Pe un raft, langa o carte, intr-un vas — un obiect frumos care nu are nevoie de explicatii.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Contact</p>
+          <h2>Hai sa vorbim</h2>
+          <p>
+            Spune-ne ce ai nevoie — cate evantaie, ce culori, pentru ce ocazie.
+            Raspundem in cel mult 24 de ore.
+          </p>
+          <div class="contact-detail">
+            <span class="contact-dot"></span>
+            <span>email@exemplu.ro</span>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-dot"></span>
+            <span>+40 7XX XXX XXX</span>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-dot"></span>
+            <span>Instagram: @aerdehartie</span>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Nume</label>
+            <input type="text" id="name" name="name" required placeholder="Numele tau">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="email@exemplu.ro">
+          </div>
+          <div class="form-group">
+            <label for="color">Culoare preferata</label>
+            <select id="color" name="color">
+              <option value="">Alege o culoare...</option>
+              <option value="roz">Roz pastel</option>
+              <option value="bleu">Bleu pastel</option>
+              <option value="vernil">Vernil pastel</option>
+              <option value="piersic">Piersic pastel</option>
+              <option value="custom">Culoare la comanda</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mesaj</label>
+            <textarea id="message" name="message" required placeholder="Cate evantaie, pentru ce ocazie, alte detalii..."></textarea>
+          </div>
+          <button type="submit" class="btn form-submit">Trimite mesajul</button>
+          <p class="form-note">Formularul este demonstrativ — inlocuieste cu datele tale reale.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="logo">Aer de Hartie</span>
+    <p>Evantaie de hartie, realizate manual &middot; &copy; 2026</p>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form demo
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Multumim! Inlocuieste acest formular cu un serviciu real (email, WhatsApp etc.).');
+    }
+  </script>
+</body>
+</html>
